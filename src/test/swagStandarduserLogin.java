@@ -7,33 +7,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FacebookLoginTC {
+public class swagStandarduserLogin {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		// step-1 : Launch chrome browser and open Facebook website
-
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://www.facebook.com/");
-
-		// step-2: Maximize the browser
-
+		driver.get("https://www.saucedemo.com/");
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 		
-		WebElement username =driver.findElement(By.id("email"));
-		username.sendKeys("Testing4304@gmail.com");
+		WebElement username = driver.findElement(By.xpath("//input[@id='user-name']"));
+		WebElement password = driver.findElement(By.xpath("//input[@id='password']"));
+		WebElement LoginBtn = driver.findElement(By.xpath("//input[@id='login-button']"));
 		
-		WebElement password = driver.findElement(By.id("pass"));
-		password.sendKeys("9747362120");
 		
-		WebElement LoginBtn = driver.findElement(By.name("login"));
+		username.sendKeys("standard_user");
+		password.sendKeys("secret_sauce");
 		LoginBtn.click();
 		
+		System.out.println("standard_user login is successfull");
+		
 		driver.close();
-
 	}
 
 }

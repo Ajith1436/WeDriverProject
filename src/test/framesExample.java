@@ -7,33 +7,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FacebookLoginTC {
+public class framesExample {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		// step-1 : Launch chrome browser and open Facebook website
-
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://www.facebook.com/");
-
-		// step-2: Maximize the browser
-
+		driver.get("https://demoqa.com/frames");
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 		
-		WebElement username =driver.findElement(By.id("email"));
-		username.sendKeys("Testing4304@gmail.com");
+		driver.switchTo().frame("frame1");
+		WebElement heading = driver.findElement(By.xpath("//h1[@id='sampleHeading']"));
+		System.out.println("the heading in Frame 1 is " +heading.getText());
 		
-		WebElement password = driver.findElement(By.id("pass"));
-		password.sendKeys("9747362120");
+		driver.switchTo().defaultContent();
 		
-		WebElement LoginBtn = driver.findElement(By.name("login"));
-		LoginBtn.click();
-		
-		driver.close();
-
 	}
 
 }
